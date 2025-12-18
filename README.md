@@ -2,7 +2,7 @@
 first prj
 Tiêu đề: Phân tích Ma trận Không âm & Ứng dụng 
  
-Nội dung trình bày của nhóm sẽ bao gồm 4 phần chính6:
+Nội dung trình bày của nhóm sẽ bao gồm 4 phần chính:
 Vấn đề của PCA và Giải pháp NMF
 Các dữ liệu thực tế như hình ảnh (pixel) hay văn bản (tần suất từ) đều được biểu diễn dưới dạng ma trận không âm. Để giảm chiều dữ liệu này, cách tiếp cận kinh điển là sử dụng SVD hoặc PCA.
 Tuy nhiên, các phương pháp này tồn tại một hạn chế lớn về khả năng diễn giải (Interpretability). PCA cho phép các vector cơ sở và hệ số mang giá trị âm. Điều này dẫn đến việc tái tạo dữ liệu thông qua các phép cộng trừ phức tạp, khiến các thành phần triệt tiêu lẫn nhau (cancellation effect)15.
