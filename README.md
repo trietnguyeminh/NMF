@@ -1,8 +1,7 @@
 # NMF
 first prj
 Tiêu đề: Phân tích Ma trận Không âm & Ứng dụng 1Slide 1, 2, 3 2
-Xin chào Thầy (Cô) và các bạn. Chúng em là Nhóm 4, lớp CS115.Q113. Trong buổi hôm nay, nhóm chúng em xin trình bày về một kỹ thuật phân rã ma trận chuyên sâu: Non-Negative Matrix Factorization (NMF) hay còn gọi là Phân tích Ma trận Không âm, cùng với cơ sở toán học và kết quả thực nghiệm của nó4.
-(Giới thiệu thành viên) 5555
+ 
 Nội dung trình bày của nhóm sẽ bao gồm 4 phần chính6:
 Vấn đề của PCA và Giải pháp NMF
 Các dữ liệu thực tế như hình ảnh (pixel) hay văn bản (tần suất từ) đều được biểu diễn dưới dạng ma trận không âm11. Để giảm chiều dữ liệu này, cách tiếp cận kinh điển là sử dụng SVD hoặc PCA12.
@@ -29,13 +28,13 @@ Thách Thức Toán Học và Giải Pháp
 Chìa Khóa Chất Lượng: Lựa chọn Độ đo Khác biệt (Divergence)
 Chất lượng của kết quả NMF được quyết định bởi việc lựa chọn độ đo sự khác biệt Hàm Mất Mát39. Mỗi hàm $D$ tương ứng với một giả định thống kê khác nhau về dữ liệu đầu vào và nhiễu40404040.
 Slide 10: Phân tích Toán học 3 Hàm Divergence 41
-1. 📏 Chuẩn Frobenius (Frobenius Norm) - $L_2$
+1. Chuẩn Frobenius (Frobenius Norm) - $L_2$
 •	Bản chất Toán học: Đây là độ đo sai số kinh điển, thực chất là tổng bình phương sai số (Least Squares)—tức là khoảng cách Euclid giữa hai ma trận10.
 •	Cơ sở Thống kê (MLE): Việc tối ưu hóa hàm này tương đương với bài toán Ước lượng Hợp lý Cực đại (MLE) khi giả định nhiễu cộng (Additive Noise) tuân theo Phân phối Chuẩn (Gaussian)11.
 o	Giải thích: Nhiễu Cộng ($\epsilon$) được cộng thẳng vào tín hiệu gốc ($V \approx WH + \epsilon$). Phân phối Chuẩn là phân phối đối xứng, tập trung sai số quanh 0.
 •	Hậu quả Thao tác: Vì công thức chứa phép bình phương $(...)^2$ 12, nó trừng phạt cực nặng các sai số lớn (outliers)13. Để giảm thiểu tổng sai số, thuật toán có xu hướng 'dàn đều sai số' ra các điểm lân cận14.
 •	Đánh giá: Điều này dẫn đến hiệu ứng làm mượt (smoothing), khiến kết quả tái tạo thường bị nhòe và mất đi độ sắc nét ở các cạnh chi tiết15.
-2. 📚 Kullback-Leibler (KL) Divergence
+2.  Kullback-Leibler (KL) Divergence
 •	Bản chất Toán học: Đây là độ đo độ lệch thông tin (Relative Entropy)16. Khác với Frobenius, hàm này là bất đối xứng17.
 Hình phạt:
 •	Phạt cực nặng (tien vo cung) khi $WH$ đánh giá quá thấp (khi $WH \to 0$).
@@ -45,7 +44,7 @@ o
 o	Giải thích: Phân phối Poisson chuyên dùng để mô tả các sự kiện đếm được (count events), như tần suất từ xuất hiện trong văn bản19.
 •	Hậu quả Thao tác: Hàm KL khuyến khích tính thưa (sparsity)20. Về mặt vật lý, nó giúp thuật toán tách biệt rõ ràng phần 'nền' (giá trị 0) và phần 'tín hiệu' (nét chữ).
 •	Đánh giá: Đây là lựa chọn tối ưu cho dữ liệu thưa (sparse) như ảnh chữ viết tay hoặc văn bản 21, tạo ra các đặc trưng parts-based sắc nét hơn so với Frobenius22.
-3. 📢 Itakura-Saito (IS) Divergence
+3.  Itakura-Saito (IS) Divergence
 •	Bản chất Toán học: Hàm này đo sự khác biệt dựa trên tỷ lệ (ratio) thay vì hiệu số23.
 •	Cơ sở Thống kê (MLE): Hàm IS tương ứng với giả định nhiễu nhân (Multiplicative Noise) tuân theo Phân phối Gamma24.
 o	Giải thích: Nhiễu Nhân là khi cường độ nhiễu tỷ lệ thuận với cường độ tín hiệu gốc.
